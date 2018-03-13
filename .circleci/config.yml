@@ -17,5 +17,5 @@ jobs:
              # docker cp /etc data:/data
              # docker run --volumes-from data pulakivasilaki/ffw:1.0.173
              env
-             ls -la
+             pwd; ls -la
 
