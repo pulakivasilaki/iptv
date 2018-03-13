@@ -9,11 +9,11 @@ jobs:
             - "86:85:bc:80:cc:a7:91:e6:2c:bd:51:17:28:58:4c:05"
 
       - checkout
-      - run: git clone $CIRCLE_REPOSITORY_URL $CIRCLE_PROJECT_REPONAME
-
+      - run: git clone $CIRCLE_REPOSITORY_URL
+      - run: env
       - setup_remote_docker
       - run: |
-             docker build -v /data --name data alpine:3.4 /bin/true
+             #docker build -v /data --name data alpine:3.4 /bin/true
              # docker create -v /data --name data alpine:3.4 /bin/true
              # docker cp /etc data:/data
              # docker run --volumes-from data pulakivasilaki/ffw:1.0.173
