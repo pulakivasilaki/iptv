@@ -13,13 +13,11 @@ jobs:
       - run: php -r "readfile('http://getcomposer.org/installer');" | sudo php -- --install-dir=/usr/local/bin --filename=composer
       - run: sudo chmod +x /usr/local/bin/composer
       - run: /usr/local/bin/composer install
+      - run: ls -la /var/www/html/
 
       - setup_remote_docker
       - run: |
-             #docker build -v /data --name data alpine:3.4 /bin/true
-             # docker create -v /data --name data alpine:3.4 /bin/true
-             # docker cp /etc data:/data
-             # docker run --volumes-from data pulakivasilaki/ffw:1.0.173
-             env
-             pwd; ls -la
-
+              TAG=0.0.$CIRCLE_BUILD_NUM
+              docker build -t $CIRCLE_USERNAME/$CIRCLE_PROJECT_REPONAME:$TAG .
+              docker login -u $docker_user -p $docker_pass
+              docker push $CIRCLE_USERNAME/$CIRCLE_PROJECT_REPONAME:$TAG
