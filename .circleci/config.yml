@@ -7,6 +7,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "86:85:bc:80:cc:a7:91:e6:2c:bd:51:17:28:58:4c:05"
+      - setup_remote_docker
       - run: |
              # creating dummy container which will hold a volume with config
              docker create -v /data --name data alpine:3.4 /bin/true
@@ -14,4 +15,4 @@ jobs:
              # docker cp /etc data:/data
              # starting application container using this volume
              docker run --volumes-from data pulakivasilaki/ffw:1.0.173
-      - setup_remote_docker
+
