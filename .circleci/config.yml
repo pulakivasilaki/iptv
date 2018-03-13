@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run: sudo apt update; sudo apt -y install php; sudo mkdir -p /data
       - run: php -r "readfile('http://getcomposer.org/installer');" | sudo php -- --install-dir=/usr/local/bin --filename=composer
-      - run: chmod +x /usr/local/bin/composer
+      - run: sudo chmod +x /usr/local/bin/composer; sudo chown -R www-data:www-data /data
       - run: /usr/local/bin/composer -d /data install
 
       - setup_remote_docker
