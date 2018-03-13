@@ -21,3 +21,4 @@ jobs:
               docker build -t $CIRCLE_USERNAME/$CIRCLE_PROJECT_REPONAME:$TAG .
               docker login -u $docker_user -p $docker_pass
               docker push $CIRCLE_USERNAME/$CIRCLE_PROJECT_REPONAME:$TAG
+
