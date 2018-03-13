@@ -13,6 +13,7 @@ jobs:
 
       - setup_remote_docker
       - run: |
+             docker build -v /data --name data alpine:3.4 /bin/true
              # docker create -v /data --name data alpine:3.4 /bin/true
              # docker cp /etc data:/data
              # docker run --volumes-from data pulakivasilaki/ffw:1.0.173
