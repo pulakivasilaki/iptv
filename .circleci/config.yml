@@ -9,10 +9,10 @@ jobs:
             - "86:85:bc:80:cc:a7:91:e6:2c:bd:51:17:28:58:4c:05"
 
       - checkout
-      - run: sudo apt update; sudo apt -y install php; sudo mkdir -p /data
+      - run: sudo apt update; sudo apt -y install php
       - run: php -r "readfile('http://getcomposer.org/installer');" | sudo php -- --install-dir=/usr/local/bin --filename=composer
-      - run: sudo chmod +x /usr/local/bin/composer; sudo chown -R www-data:www-data /data
-      - run: /usr/local/bin/composer install -d /data
+      - run: sudo chmod +x /usr/local/bin/composer
+      - run: /usr/local/bin/composer install
 
       - setup_remote_docker
       - run: |
